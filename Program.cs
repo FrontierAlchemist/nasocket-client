@@ -16,9 +16,9 @@ namespace nasocket_client
 			Socket clientSocket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
 			try {
-				clientSocket.Connect(endPoint);
 				Console.WriteLine("Connecting to server...");
-
+				clientSocket.Connect(endPoint);
+				Console.WriteLine("Connected.");
 				while (true) {
 					string? message = Console.ReadLine();
 					if (message == null) {
