@@ -21,7 +21,7 @@ namespace nasocket_client
 			try {
 				clientSocket.Connect(endPoint);
 			} catch (Exception exception) {
-				Console.WriteLine($"Can't connect to server. Exception message: {exception.Message}.");
+				Console.WriteLine($"Can't connect to server. Exception message: \"{exception.Message}\".");
 				return false;
 			}
 			Console.WriteLine("Connected.");
@@ -47,7 +47,7 @@ namespace nasocket_client
 				byte[] messageBytes = Encoding.UTF32.GetBytes(message);
 				clientSocket.Send(messageBytes);
 			} catch (Exception exception) {
-				Console.WriteLine($"Can't send message to server. Exception message: {exception.Message}");
+				Console.WriteLine($"Can't send message to server. Exception message: \"{exception.Message}\".");
 				return false;
 			}
 			Console.WriteLine("Message was sent.");
@@ -61,9 +61,9 @@ namespace nasocket_client
 				byte[] buffer = new byte[1024];
 				_ = clientSocket.Receive(buffer);
 				var response = Encoding.UTF32.GetString(buffer);
-				Console.WriteLine($"Response from server: {response}");
+				Console.WriteLine($"Response from server: \"{response}\".");
 			} catch (Exception exception) {
-				Console.WriteLine($"Can't get response from server. Exception message: {exception.Message}");
+				Console.WriteLine($"Can't get response from server. Exception message: \"{exception.Message}\".");
 				return false;
 			}
 			return true;
