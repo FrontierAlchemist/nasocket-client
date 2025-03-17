@@ -5,9 +5,9 @@ using System.Text;
 
 namespace nasocket_client;
 
-internal class Connection(string serverAddress, int port) : IDisposable
+internal class Connection(IPAddress serverAddress, int port) : IDisposable
 {
-	private readonly IPEndPoint endPoint = new(IPAddress.Parse(serverAddress), port);
+	private readonly IPEndPoint endPoint = new(serverAddress, port);
 	private readonly Socket clientSocket = new(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
 
 	public void Dispose()
